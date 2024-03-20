@@ -17,21 +17,20 @@ import SelectGroupTwo from "@/components/SelectGroup/SelectGroupTwo";
 const FormElements = () => {
   return (
     <>
-      <Breadcrumb pageName="FormElements" />
 
-      <div className="grid grid-cols-1 gap-9 sm:grid-cols-2">
+      <div className="grid grid-cols gap-9">
         <div className="flex flex-col gap-9">
           {/* <!-- Input Fields --> */}
           <div className="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
             <div className="border-b border-stroke px-6.5 py-4 dark:border-strokedark">
-              <h3 className="font-medium text-black dark:text-white">
-                Input Fields
+              <h3 className="font-small text-black dark:text-white">
+                Add New Question
               </h3>
             </div>
             <div className="flex flex-col gap-5.5 p-6.5">
               <div>
                 <label className="mb-3 block text-sm font-medium text-black dark:text-white">
-                  Default Input
+                  Quiz Question
                 </label>
                 <input
                   type="text"
@@ -39,8 +38,59 @@ const FormElements = () => {
                   className="w-full rounded-lg border-[1.5px] border-stroke bg-transparent px-5 py-3 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
                 />
               </div>
-
               <div>
+                <label className="mb-3 block text-sm font-medium text-black dark:text-white">
+                  Option 1
+                </label>
+                <input
+                  type="text"
+                  placeholder="Default Input"
+                  className="w-full rounded-lg border-[1.5px] border-stroke bg-transparent px-5 py-3 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
+                />
+              </div>
+              <div>
+                <label className="mb-3 block text-sm font-medium text-black dark:text-white">
+                  Option 2
+                </label>
+                <input
+                  type="text"
+                  placeholder="Default Input"
+                  className="w-full rounded-lg border-[1.5px] border-stroke bg-transparent px-5 py-3 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
+                />
+              </div>
+              <div>
+                <label className="mb-3 block text-sm font-medium text-black dark:text-white">
+                  Option 3
+                </label>
+                <input
+                  type="text"
+                  placeholder="Default Input"
+                  className="w-full rounded-lg border-[1.5px] border-stroke bg-transparent px-5 py-3 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
+                />
+              </div>
+              <div>
+                <label className="mb-3 block text-sm font-medium text-black dark:text-white">
+                  Option 4
+                </label>
+                <input
+                  type="text"
+                  placeholder="Default Input"
+                  className="w-full rounded-lg border-[1.5px] border-stroke bg-transparent px-5 py-3 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
+                />
+              </div>
+              <div>
+                <label className="mb-3 block text-sm font-medium text-black dark:text-white">
+                  Answer
+                </label>
+                <input
+                  type="text"
+                  placeholder="Default Input"
+                  className="w-full rounded-lg border-[1.5px] border-stroke bg-transparent px-5 py-3 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
+                />
+              </div>
+              
+
+              {/* <div>
                 <label className="mb-3 block text-sm font-medium text-black dark:text-white">
                   Active Input
                 </label>
@@ -49,9 +99,9 @@ const FormElements = () => {
                   placeholder="Active Input"
                   className="w-full rounded-lg border-[1.5px] border-primary bg-transparent px-5 py-3 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:bg-form-input dark:text-white"
                 />
-              </div>
+              </div> */}
 
-              <div>
+              {/* <div>
                 <label className="mb-3 block text-sm font-medium text-black dark:text-white">
                   Disabled label
                 </label>
@@ -61,12 +111,14 @@ const FormElements = () => {
                   disabled
                   className="w-full rounded-lg border-[1.5px] border-stroke bg-transparent px-5 py-3 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary dark:disabled:bg-black"
                 />
-              </div>
+              </div> */}
+
+
             </div>
           </div>
 
           {/* <!-- Toggle switch input --> */}
-          <div className="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
+          {/* <div className="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
             <div className="border-b border-stroke px-6.5 py-4 dark:border-strokedark">
               <h3 className="font-medium text-black dark:text-white">
                 Toggle switch input
@@ -78,10 +130,10 @@ const FormElements = () => {
               <SwitcherThree />
               <SwitcherFour />
             </div>
-          </div>
+          </div> */}
 
           {/* <!-- Time and date --> */}
-          <div className="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
+          {/* <div className="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
             <div className="border-b border-stroke px-6.5 py-4 dark:border-strokedark">
               <h3 className="font-medium text-black dark:text-white">
                 Time and date
@@ -91,10 +143,10 @@ const FormElements = () => {
               <DatePickerOne />
               <DatePickerTwo />
             </div>
-          </div>
+          </div> */}
 
           {/* <!-- File upload --> */}
-          <div className="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
+          {/* <div className="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
             <div className="border-b border-stroke px-6.5 py-4 dark:border-strokedark">
               <h3 className="font-medium text-black dark:text-white">
                 File upload
@@ -121,12 +173,13 @@ const FormElements = () => {
                 />
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
 
-        <div className="flex flex-col gap-9">
+        {/* <div className="flex flex-col gap-9"> */}
+
           {/* <!-- Textarea Fields --> */}
-          <div className="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
+          {/* <div className="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
             <div className="border-b border-stroke px-6.5 py-4 dark:border-strokedark">
               <h3 className="font-medium text-black dark:text-white">
                 Textarea Fields
@@ -167,10 +220,10 @@ const FormElements = () => {
                 ></textarea>
               </div>
             </div>
-          </div>
+          </div> */}
 
           {/* <!-- Checkbox and radio --> */}
-          <div className="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
+          {/* <div className="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
             <div className="border-b border-stroke px-6.5 py-4 dark:border-strokedark">
               <h3 className="font-medium text-black dark:text-white">
                 Checkbox and radio
@@ -183,10 +236,10 @@ const FormElements = () => {
               <CheckboxFour />
               <CheckboxFive />
             </div>
-          </div>
+          </div> */}
 
           {/* <!-- Select input --> */}
-          <div className="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
+          {/* <div className="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
             <div className="border-b border-stroke px-6.5 py-4 dark:border-strokedark">
               <h3 className="font-medium text-black dark:text-white">
                 Select input
@@ -196,8 +249,10 @@ const FormElements = () => {
               <SelectGroupTwo />
               <MultiSelect id="multiSelect" />
             </div>
-          </div>
-        </div>
+          </div> */}
+        
+        {/* </div> */}
+      
       </div>
     </>
   );

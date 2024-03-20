@@ -1,57 +1,175 @@
-import Breadcrumb from "@/components/Breadcrumbs/Breadcrumb";
-
-import { Metadata } from "next";
+"use client";
+import React , { useState, useEffect} from "react";
+import {useParams} from "react-router-dom";
+import axios from "axios";
+import {toast} from "react-toastify";
 import DefaultLayout from "@/components/Layouts/DefaultLayout";
-import SelectGroupOne from "@/components/SelectGroup/SelectGroupOne";
 import Link from "next/link";
+import Toast from '@/js/toast';
+import { useRouter } from "next/router";
 
-export const metadata: Metadata = {
-  title: "Next.js Form Layout | TailAdmin - Next.js Dashboard Template",
-  description:
-    "This is Next.js Form Layout page for TailAdmin - Next.js Tailwind CSS Admin Dashboard Template",
+
+const initialState = {
+  question: "",
+  option1: "",
+  option2: "",
+  option3: "",
+  option4: "",
+  correctAnswer: "",
 };
 
+
 const FormLayout = () => {
+  const [state, setState] = useState(initialState);
+
+  
+  
+  const { question, option1, option2, option3, option4, correctAnswer } = state;
+
+
+
+  const handleSubmit = (e: { preventDefault: () => void; }) => {
+    e.preventDefault();
+    if(!question || !option1 || !option2|| !option3 || !option4 || !correctAnswer){
+      toast.error("Please input the value")
+    } else {
+      axios.post("http://localhost:5000/api/post",{
+        question,
+        option1,
+        option2,
+        option3,
+        option4,
+        correctAnswer
+      }).then(() => {
+        setState({question: "",option1: "",option2:"",option3:"",option4:"",correctAnswer:""});
+        toast.success('Data sent successfully!');
+      }).catch((err) => toast.error(err.response.data));
+      
+    }
+  };
+
+  const handleInputChange = (e: { target: { name: any; value: any; }; }) => {
+    const { name, value } = e.target;
+    setState({ ...state, [name]: value });
+  };
+
+
   return (
     <DefaultLayout>
-      <Breadcrumb pageName="FormLayout" />
 
-      <div className="grid grid-cols-1 gap-9 sm:grid-cols-2">
+      <div className="grid grid-cols-1 gap-9 ">
         <div className="flex flex-col gap-9">
-          {/* <!-- Contact Form --> */}
+          {/* <!-- Question Form --> */}
           <div className="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
             <div className="border-b border-stroke px-6.5 py-4 dark:border-strokedark">
               <h3 className="font-medium text-black dark:text-white">
-                Contact Form
+                Add Question
               </h3>
             </div>
-            <form action="#">
+            <form action="#"  onSubmit={handleSubmit}>
               <div className="p-6.5">
+
+              <div className="mb-4.5">
+                  <label id="question" className="mb-3 block text-sm font-medium text-black dark:text-white">
+                    Question
+                  </label>
+                  <input
+                    type="text"
+                    id="question"
+                    name="question"
+                    placeholder="Enter Question"
+                    value={question}
+                    className="w-full rounded border-[1.5px] border-stroke bg-transparent px-5 py-3 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
+                    onChange={handleInputChange}
+                  />
+                </div>
+
                 <div className="mb-4.5 flex flex-col gap-6 xl:flex-row">
+
                   <div className="w-full xl:w-1/2">
-                    <label className="mb-3 block text-sm font-medium text-black dark:text-white">
-                      First name
+                    <label id= "option1" className="mb-3 block text-sm font-medium text-black dark:text-white">
+                      Option 1
                     </label>
                     <input
                       type="text"
-                      placeholder="Enter your first name"
+                      id="option1"
+                      name="option1"
+                      placeholder=""
+                      value={option1}
                       className="w-full rounded border-[1.5px] border-stroke bg-transparent px-5 py-3 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
+                      onChange={handleInputChange}
                     />
                   </div>
 
                   <div className="w-full xl:w-1/2">
                     <label className="mb-3 block text-sm font-medium text-black dark:text-white">
-                      Last name
+                      Option 2
                     </label>
                     <input
                       type="text"
-                      placeholder="Enter your last name"
+                      id="option2"
+                      name="option2"
+                      placeholder=""
+                      value={option2}
                       className="w-full rounded border-[1.5px] border-stroke bg-transparent px-5 py-3 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
+                      onChange={handleInputChange}
                     />
                   </div>
+
+                  
+                </div>
+
+                <div className="mb-4.5 flex flex-col gap-6 xl:flex-row">
+
+                  <div className="w-full xl:w-1/2">
+                    <label className="mb-3 block text-sm font-medium text-black dark:text-white">
+                      Option 3
+                    </label>
+                    <input
+                      type="text"
+                      id="option3"
+                      name="option3"
+                      placeholder=""
+                      value={option3}
+                      className="w-full rounded border-[1.5px] border-stroke bg-transparent px-5 py-3 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
+                      onChange={handleInputChange}
+                    />
+                  </div>
+
+                  <div className="w-full xl:w-1/2">
+                    <label className="mb-3 block text-sm font-medium text-black dark:text-white">
+                      Option 4
+                    </label>
+                    <input
+                      type="text"
+                      id="option4"
+                      name="option4"
+                      placeholder=""
+                      value={option4}
+                      className="w-full rounded border-[1.5px] border-stroke bg-transparent px-5 py-3 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
+                      onChange={handleInputChange}
+                    />
+                  </div>
+                  
+                  
                 </div>
 
                 <div className="mb-4.5">
+                  <label className="mb-3 block text-sm font-medium text-black dark:text-white">
+                    Answer
+                  </label>
+                  <input
+                    type="text"
+                    id="correctAnswer"
+                    name="correctAnswer"
+                    placeholder="Enter Answer"
+                    value={correctAnswer}
+                    className="w-full rounded border-[1.5px] border-stroke bg-transparent px-5 py-3 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
+                    onChange={handleInputChange}
+                  />
+                </div>
+
+                {/* <div className="mb-4.5">
                   <label className="mb-3 block text-sm font-medium text-black dark:text-white">
                     Email <span className="text-meta-1">*</span>
                   </label>
@@ -60,9 +178,9 @@ const FormLayout = () => {
                     placeholder="Enter your email address"
                     className="w-full rounded border-[1.5px] border-stroke bg-transparent px-5 py-3 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
                   />
-                </div>
+                </div> */}
 
-                <div className="mb-4.5">
+                {/* <div className="mb-4.5">
                   <label className="mb-3 block text-sm font-medium text-black dark:text-white">
                     Subject
                   </label>
@@ -71,11 +189,11 @@ const FormLayout = () => {
                     placeholder="Select subject"
                     className="w-full rounded border-[1.5px] border-stroke bg-transparent px-5 py-3 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
                   />
-                </div>
+                </div> */}
 
-                <SelectGroupOne />
+                {/* <SelectGroupOne /> */}
 
-                <div className="mb-6">
+                {/* <div className="mb-6">
                   <label className="mb-3 block text-sm font-medium text-black dark:text-white">
                     Message
                   </label>
@@ -84,19 +202,25 @@ const FormLayout = () => {
                     placeholder="Type your message"
                     className="w-full rounded border-[1.5px] border-stroke bg-transparent px-5 py-3 text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
                   ></textarea>
-                </div>
-
-                <button className="flex w-full justify-center rounded bg-primary p-3 font-medium text-gray hover:bg-opacity-90">
-                  Send Message
-                </button>
+                </div> */}
+                
+                
+                <input
+                    type="submit"
+                    value="Submit"
+                    
+                    className="w-full cursor-pointer rounded-lg border border-primary bg-primary p-4 text-white transition hover:bg-opacity-90"
+                  />
+                
               </div>
             </form>
           </div>
+          
         </div>
 
-        <div className="flex flex-col gap-9">
+        {/* <div className="flex flex-col gap-9"> */}
           {/* <!-- Sign In Form --> */}
-          <div className="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
+          {/* <div className="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
             <div className="border-b border-stroke px-6.5 py-4 dark:border-strokedark">
               <h3 className="font-medium text-black dark:text-white">
                 Sign In Form
@@ -170,10 +294,10 @@ const FormLayout = () => {
                 </button>
               </div>
             </form>
-          </div>
+          </div> */}
 
           {/* <!-- Sign Up Form --> */}
-          <div className="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
+          {/* <div className="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
             <div className="border-b border-stroke px-6.5 py-4 dark:border-strokedark">
               <h3 className="font-medium text-black dark:text-white">
                 Sign Up Form
@@ -230,8 +354,8 @@ const FormLayout = () => {
                 </button>
               </div>
             </form>
-          </div>
-        </div>
+          </div> */}
+        {/* </div> */}
       </div>
     </DefaultLayout>
   );
