@@ -30,12 +30,12 @@ npm run dev
 
 #### future Enhancements
 
-- **Delete and View  01:** Update Next.js into version 14
-- **Authentication and Authorization 02:** Integrate flatpickr in [Date Picker/Form Elements]
-- **Timer 03:** Change color after select an option [Select Element/Form Elements].
-- **User option for Selection Categories of Question 04:** Make it functional [Multiselect Dropdown/Form Elements].
-- **More UserFriendly 05:** Make best value editable [Pricing Table One/Pricing Table].
-- **Deploy in Vercel 06:** Add Default Layout Component and make App/Layout more clean and use it in every pages.
+- **Delete and View  01:** 
+- **Authentication and Authorization 02:** 
+- **Timer 03:** .
+- **User option for Selection Categories of Question 04:** 
+- **More UserFriendly 05:** 
+- **Deploy in Vercel 06:** 
 
 ### Version 0.1.0 - Initial Release - [March 20 2024]
 
